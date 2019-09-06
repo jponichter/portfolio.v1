@@ -81,3 +81,77 @@ document.querySelector(".link-contact").addEventListener("click", function() {
   smoothScroll("#contact-page", 1000);
 });
 
+function navScroller() {
+  const nav = document.querySelector("nav");
+  const burger = document.querySelectorAll("line");
+  const aboutPage = document.querySelector("#about-page");
+  const portfolioPage = document.querySelector("#portfolio-page");
+  const frontPage = document.querySelector(".front-page");
+  const footer = document.querySelector("footer");
+  console.log(burger);
+
+  const ScrollOneOptions = {
+    rootMargin: "-100px 0px 0px 0px"
+  };
+  const ScrollTwoOptions = {
+    threshold: [0],
+    rootMargin: "-30px 0px 0px 0px"
+  };
+  const ScrollThreeOptions = {
+    threshold: 0,
+    rootMargin: "-30px 0px 0px 0px"
+  };
+
+  const ScrollOneObserver = new IntersectionObserver(
+    (entries, ScrollOneObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          nav.classList.add("nav-scrolled");
+        } else {
+          nav.classList.remove("nav-scrolled");
+        }
+      });
+    },
+    ScrollOneOptions
+  );
+
+  const ScrollTwoObserver = new IntersectionObserver(
+    (entries, ScrollTwoObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          burger.forEach((item, index) => {
+            item.classList.add("burger-scrolled");
+          });
+        } else {
+          burger.forEach((item, index) => {
+            item.classList.remove("burger-scrolled");
+          });
+        }
+      });
+    },
+    ScrollTwoOptions
+  );
+
+  const ScrollThreeObserver = new IntersectionObserver(
+    (entries, ScrollThreeObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          burger.forEach((item, index) => {
+            item.classList.remove("burger-scrolled");
+          });
+        } else {
+          burger.forEach((item, index) => {
+            item.classList.add("burger-scrolled");
+          });
+        }
+      });
+    },
+    ScrollThreeOptions
+  );
+
+  ScrollOneObserver.observe(frontPage);
+  ScrollTwoObserver.observe(aboutPage);
+  ScrollThreeObserver.observe(portfolioPage);
+}
+
+navScroller();
