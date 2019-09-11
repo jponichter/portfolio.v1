@@ -3,6 +3,7 @@ const navSlide = () => {
   const nav = document.querySelector(".nav-links");
   const top = document.querySelector("nav");
   const navLinks = document.querySelectorAll(".nav-links li");
+  const burgerColor = document.querySelectorAll("line");
 
   function animateLinks() {
     const screen = window.matchMedia("(max-width: 768px)");
@@ -22,6 +23,9 @@ const navSlide = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
       top.classList.toggle("nav-black");
     }
+    burgerColor.forEach(index => {
+      index.classList.toggle("burger-white");
+    });
     animateLinks();
   });
 
@@ -33,6 +37,9 @@ const navSlide = () => {
         if (window.matchMedia("(max-width: 768px)").matches) {
           top.classList.toggle("nav-black");
         }
+        burgerColor.forEach(index => {
+          index.classList.remove("burger-white");
+        });
         animateLinks();
       });
     });
@@ -47,9 +54,6 @@ function smoothScroll(target, duration) {
   let targetPosition = targetSection.getBoundingClientRect().top;
   let startingPosition = window.pageYOffset;
   let startTime = null;
-
-  console.log(targetPosition);
-  console.log(startingPosition);
 
   function animation(currentTime) {
     if (startTime === null) startTime = currentTime;
@@ -88,13 +92,12 @@ function navScroller() {
   const portfolioPage = document.querySelector("#portfolio-page");
   const frontPage = document.querySelector(".front-page");
   const footer = document.querySelector("footer");
-  console.log(burger);
 
   const ScrollOneOptions = {
     rootMargin: "-100px 0px 0px 0px"
   };
   const ScrollTwoOptions = {
-    threshold: [0],
+    threshold: 0,
     rootMargin: "-30px 0px 0px 0px"
   };
   const ScrollThreeOptions = {
