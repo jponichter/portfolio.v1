@@ -3,6 +3,7 @@ const navSlide = () => {
   const nav = document.querySelector(".nav-links");
   const top = document.querySelector("nav");
   const navLinks = document.querySelectorAll(".nav-links li");
+  const burgerColor = document.querySelectorAll("line");
 
   function animateLinks() {
     const screen = window.matchMedia("(max-width: 768px)");
@@ -22,6 +23,9 @@ const navSlide = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
       top.classList.toggle("nav-black");
     }
+    burgerColor.forEach(index => {
+      index.classList.toggle("burger-white");
+    });
     animateLinks();
   });
 
@@ -33,6 +37,9 @@ const navSlide = () => {
         if (window.matchMedia("(max-width: 768px)").matches) {
           top.classList.toggle("nav-black");
         }
+        burgerColor.forEach(index => {
+          index.classList.remove("burger-white");
+        });
         animateLinks();
       });
     });
@@ -47,9 +54,6 @@ function smoothScroll(target, duration) {
   let targetPosition = targetSection.getBoundingClientRect().top;
   let startingPosition = window.pageYOffset;
   let startTime = null;
-
-  console.log(targetPosition);
-  console.log(startingPosition);
 
   function animation(currentTime) {
     if (startTime === null) startTime = currentTime;
@@ -81,3 +85,76 @@ document.querySelector(".link-contact").addEventListener("click", function() {
   smoothScroll("#contact-page", 1000);
 });
 
+function navScroller() {
+  const nav = document.querySelector("nav");
+  const burger = document.querySelectorAll("line");
+  const aboutPage = document.querySelector("#about-page");
+  const portfolioPage = document.querySelector("#portfolio-page");
+  const frontPage = document.querySelector(".front-page");
+  const footer = document.querySelector("footer");
+
+  const ScrollOneOptions = {
+    rootMargin: "-100px 0px 0px 0px"
+  };
+  const ScrollTwoOptions = {
+    threshold: 0,
+    rootMargin: "-30px 0px 0px 0px"
+  };
+  const ScrollThreeOptions = {
+    threshold: 0,
+    rootMargin: "-30px 0px 0px 0px"
+  };
+
+  const ScrollOneObserver = new IntersectionObserver(
+    (entries, ScrollOneObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          nav.classList.add("nav-scrolled");
+        } else {
+          nav.classList.remove("nav-scrolled");
+        }
+      });
+    },
+    ScrollOneOptions
+  );
+
+  const ScrollTwoObserver = new IntersectionObserver(
+    (entries, ScrollTwoObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          burger.forEach((item, index) => {
+            item.classList.add("burger-scrolled");
+          });
+        } else {
+          burger.forEach((item, index) => {
+            item.classList.remove("burger-scrolled");
+          });
+        }
+      });
+    },
+    ScrollTwoOptions
+  );
+
+  const ScrollThreeObserver = new IntersectionObserver(
+    (entries, ScrollThreeObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          burger.forEach((item, index) => {
+            item.classList.remove("burger-scrolled");
+          });
+        } else {
+          burger.forEach((item, index) => {
+            item.classList.add("burger-scrolled");
+          });
+        }
+      });
+    },
+    ScrollThreeOptions
+  );
+
+  ScrollOneObserver.observe(frontPage);
+  ScrollTwoObserver.observe(aboutPage);
+  ScrollThreeObserver.observe(portfolioPage);
+}
+
+navScroller();

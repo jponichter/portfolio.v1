@@ -40,6 +40,8 @@ nav {
           align-items: center;
   min-height: 10vh;
   z-index: 55;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .nav-links {
@@ -63,6 +65,12 @@ nav {
 .nav-links a {
   text-decoration: none;
   color: white;
+}
+
+@media screen and (min-width: 799px) {
+  .nav-scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 }
 
 .front-page {
@@ -118,7 +126,7 @@ nav {
   font-size: 48px;
   text-align: center;
   width: 100%;
-  padding-top: 100px;
+  padding: 150px 0 0 0;
 }
 
 .about-text {
@@ -183,11 +191,11 @@ nav {
   font-weight: normal;
   font-size: 30px;
   padding: 10px;
+  color: #000000;
 }
 
 #portfolio-page a {
   text-decoration: none;
-  color: #000000;
 }
 
 .github-link {
@@ -200,7 +208,7 @@ nav {
   font-size: 48px;
   text-align: center;
   width: 100%;
-  padding: 60px;
+  padding: 150px 60px 0px 60px;
 }
 
 .card-container {
@@ -259,6 +267,10 @@ nav {
   padding: 20px;
   width: 100%;
   font-size: 20px;
+}
+
+.card .back .card-links a {
+  color: #ffffff;
 }
 
 .card .back .card-links img {
@@ -376,6 +388,10 @@ nav {
   z-index: 2;
 }
 
+#contact-page p {
+  padding-bottom: 100px;
+}
+
 .btn-email {
   color: #0455b3;
   -webkit-box-sizing: border-box;
@@ -458,6 +474,13 @@ footer {
   .about-text {
     font-size: 30px;
   }
+  .title-portfolio {
+    padding-top: 200px;
+    margin: auto;
+  }
+  .title-about {
+    padding: 200px 0 0 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -501,6 +524,12 @@ footer {
     display: block;
     padding-right: 20px;
   }
+  .burger-scrolled {
+    stroke: #000000;
+  }
+  .burger-white {
+    stroke: #ffffff !important;
+  }
   .front-page h2 {
     font-size: 26px;
   }
@@ -513,7 +542,7 @@ footer {
   }
   .title-about {
     font-size: 30px;
-    padding-bottom: 20px;
+    padding: 64px 0 20px 0;
   }
   .about-text {
     font-size: 20px;
@@ -540,6 +569,9 @@ footer {
   }
   #portfolio-page h2 {
     font-size: 24px;
+  }
+  .title-portfolio {
+    padding: 60px 60px 10px 60px;
   }
   .project-one,
   .project-two {
