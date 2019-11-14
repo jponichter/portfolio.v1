@@ -164,7 +164,7 @@ nav {
 }
 
 #portfolio-page {
-  height: 100vh;
+  min-height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(rgba(189, 189, 189, 0.85)));
   background: linear-gradient(180deg, #ffffff 0%, rgba(189, 189, 189, 0.85) 100%);
   color: #000000;
@@ -178,6 +178,9 @@ nav {
           flex-flow: row wrap;
   -ms-flex-line-pack: start;
       align-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #portfolio-page h3 {
@@ -201,6 +204,8 @@ nav {
 .github-link {
   text-align: center;
   margin: auto;
+  width: 100%;
+  padding-bottom: 40px;
 }
 
 .title-portfolio {
@@ -208,7 +213,7 @@ nav {
   font-size: 48px;
   text-align: center;
   width: 100%;
-  padding: 150px 60px 0px 60px;
+  padding: 150px 60px 20px 60px;
 }
 
 .card-container {
@@ -314,8 +319,7 @@ nav {
           align-items: center;
 }
 
-.project-one,
-.project-two {
+.project {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -330,11 +334,10 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 110px;
+  padding: 50px;
 }
 
-.project-one img,
-.project-two img {
+.project img {
   width: 450px;
   height: 220px;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -573,13 +576,11 @@ footer {
   .title-portfolio {
     padding: 60px 60px 10px 60px;
   }
-  .project-one,
-  .project-two {
+  .project {
     width: 100%;
     padding: 10px;
   }
-  .project-one img,
-  .project-two img {
+  .project img {
     width: 270px;
     height: 140px;
   }
